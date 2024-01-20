@@ -1,0 +1,81 @@
+body {
+  background-image: url("./pawprints.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+}
+
+.intro {
+  text-align: center;
+  color: #610564;
+  /* font-size: 24px; */
+  margin-bottom: 20px;
+}
+.intro-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.players {
+  /* display: flex; */
+  flex-wrap: wrap;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 0fr 0fr 0fr;
+  gap: 10px 2em;
+}
+
+.player-card {
+  width: 360px;
+  height: 420px;
+  margin-left: 70px;
+  background-color: lightskyblue;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+  
+}
+
+.player-card:hover {
+  transform: translateY(-5px);
+}
+
+.player-image-container {
+  height: 300px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.player-details {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+  border: 0;
+}
+
+p {
+  margin: 0;
+}
+
+h2{
+  margin: 0;
+}
+
