@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const puppyBowlApi = createApi({
   reducerPath: "puppyBowlApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://fsa-puppy-bowl.herokuapp.com/api/2310-UNF-HY-WEB-PT/"
+    baseUrl: "https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-PT-SF/"
   }),
   endpoints:  (builder) => ({
     fetchPlayers: builder.query({ 

@@ -1,20 +1,57 @@
 body {
-  background-image: url("./pawprints.jpg");
+  background-image: url("./frame-with-dogs-white-background_53876-99295.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  background-color: #000000;
+  color: white;
+  padding: 20px;
+}
+
+nav ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ddd;
+}
+
 .intro {
   text-align: center;
-  color: #610564;
+  color: #bc0707;
   /* font-size: 24px; */
-  margin-bottom: 20px;
+  margin-top: 50px;
 }
 .intro-container {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.new-player{
+  justify-content: center;
 }
 
 .players {
@@ -30,14 +67,14 @@ body {
   width: 360px;
   height: 420px;
   margin-left: 70px;
-  background-color: lightskyblue;
+  background-color: rgb(151, 198, 241);
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
   transition: transform 0.3s;
-  
+  margin-top: 15px;
 }
 
 .player-card:hover {
@@ -77,5 +114,51 @@ p {
 
 h2{
   margin: 0;
+}
+
+#container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#intro {
+  text-align: center;
+  margin: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#new-player {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
 }
 

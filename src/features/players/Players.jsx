@@ -1,21 +1,24 @@
 import React from "react";
 import { useFetchPlayersQuery } from "../../api/puppyBowlApi";
+import Header from "../../Header";
 
 const Players = () => {
   const { data = {}, error, isLoading, refetch } = useFetchPlayersQuery();
 
   const handleMoreInfo = (id) => {
-    // Handle the logic to grab cohortId from the API
-    console.log(`Player id: ${id}`);
+    alert(`Player id: ${id}`);
   };
 
   const handleRemovePlayer = async (playerId) => {
-    // Handle the logic to remove a player from the API
-    console.log(`Removing player with id: ${playerId}`);
-    // Add your API call to delete the player
-    // After successful removal, trigger a refetch of players
-    
-    await refetch();
+    try {
+      await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-PT-SF/players/${playerId}`, { method: "DELETE" });
+  
+    } catch (err) {
+      console.error(
+        `Whoops, trouble removing player #${playerId} from the roster!`,
+        err
+      );
+    }
   };
 
   if (isLoading) {
