@@ -41,15 +41,18 @@ function App() {
           <li>
             <Link to="/new-player-form">New Player Form</Link>
           </li>
-
+          <li>
+            <Link to="/players">All Players</Link>
+          </li>
         </ol>
       </nav>
 
-    <Routes>
-      <Route path="/" element={<Header />} />
+    <Routes>   
       <Route path="/new-player-form" element={<NewPlayerForm />} />
-      <Route path="/id" element={<SinglePlayer />} />
+      <Route path="/players/:id" element={<SinglePlayer />} />
+      <Route path="/players" element={<Players />} />
     </Routes>
+    <Header />
     <Players />
     </div>
    

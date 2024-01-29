@@ -34,7 +34,7 @@ const SinglePlayer = () => {
         <Alert severity="error">
           Failed to load player! Please try again.
         </Alert>
-        <Button onClick={() => navigate("/")}>Go back</Button>
+        <Button onClick={() => navigate("/players")}>Go back</Button>
       </>
     );
   }
@@ -43,7 +43,7 @@ const SinglePlayer = () => {
 
   return (
     <div>
-      <Button onClick={() => navigate("/")}>Go back</Button>
+      <Button onClick={() => navigate("/players")}>Go back</Button>
       <div key={player.id} className="player-card">
         <div className="player-image-container">
           <img src={player.imageUrl} alt={player.name} className="player-image" />
