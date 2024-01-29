@@ -48,9 +48,10 @@ function App() {
       </nav>
 
     <Routes>   
-      <Route path="/new-player-form" element={<NewPlayerForm />} />
+
       <Route path="/players/:id" element={<SinglePlayer />} />
       <Route path="/players" element={<Players />} />
+      <Route path="/new-player-form" element={<NewPlayerForm />} />
     </Routes>
     <Header />
     <Players />
