@@ -1,39 +1,59 @@
-// SinglePlayer.jsx
-
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchSinglePlayer } from "./api"; // Import your API module
+import { useParams, Link } from "react-router-dom";
+import { useFetchSinglePlayerQuery } from "../../api/puppyBowlApi";
+import { useNavigate } from "react-router-dom";
+import {
+  CardContent,
+  Card,
+  Typography,
+  Grid,
+  CircularProgress,
+  Alert,
+  CardActions,
+  Button,
+} from "@mui/material";
+
 
 const SinglePlayer = () => {
-  const { playerId } = useParams();
-  const [player, setPlayer] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { data, error, isLoading } = useFetchSinglePlayerQuery(id);
 
   useEffect(() => {
-    const fetchPlayerDetails = async () => {
-      try {
-        const playerData = await fetchSinglePlayer(playerId);
-        setPlayer(playerData);
-      } catch (error) {
+    // Log the player ID when it changes
+    console.log(data?.player?.id);
+  }, [data?.player?.id]);
 
-        console.error("Error fetching player details:", error);
-      }
-    };
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
-    fetchPlayerDetails();
-  }, [playerId]);
+  if (error || !data?.player) {
+    return (
+      <>
+        <Alert severity="error">
+          Failed to load player! Please try again.
+        </Alert>
+        <Button onClick={() => navigate("/")}>Go back</Button>
+      </>
+    );
+  }
+
+  const { player } = data;
 
   return (
     <div>
-      {player ? (
-        <>
-          <h2>{player.name}</h2>
-          <p>Breed: {player.breed}</p>
-          <img src={player.imageURL} alt={player.name} />
-        
-        </>
-      ) : (
-        <p>Loading player details...</p>
-      )}
+      <Button onClick={() => navigate("/")}>Go back</Button>
+      <div key={player.id} className="player-card">
+        <div className="player-image-container">
+          <img src={player.imageUrl} alt={player.name} className="player-image" />
+        </div>
+        <div className="player-details">
+          <h2>Hi, I'm {player.name} </h2>
+          <p>Cohort: {player.cohort} </p>
+          <p>Team ID: {player.teamId} </p>
+        </div>
+      </div>
     </div>
   );
 };

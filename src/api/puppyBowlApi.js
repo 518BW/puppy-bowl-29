@@ -5,12 +5,15 @@ export const puppyBowlApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-PT-SF/"
   }),
-  endpoints:  (builder) => ({
+  endpoints: (builder) => ({
     fetchPlayers: builder.query({ 
       query: () => `players`,
-
     }),
+    fetchSinglePlayer: builder.query({
+      query: (id) => `players/${id}`,
+    })
   }),
 });
 
-export const { useFetchPlayersQuery } = puppyBowlApi;
+
+export const { useFetchPlayersQuery, useFetchSinglePlayerQuery } = puppyBowlApi;

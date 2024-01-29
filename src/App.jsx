@@ -3,6 +3,7 @@ import Players from "./features/players/Players";
 import NewPlayerForm from "./NewPlayerForm";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
+import SinglePlayer from "./features/players/SinglePlayers";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -13,7 +14,7 @@ function App() {
   const searchApi = async (query) => {
 
     try {
-      const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-PT-SF/players/${query}`);
+      const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2310-FSA-ET-WEB-PT-SF/players?q=${query}`);
       const data = await response.json();
       setSearchResults(data);
     } catch (error) {
@@ -26,9 +27,13 @@ function App() {
       <nav>
       <SearchBar onSearch={searchApi} className="search" />
       
-      {searchResults.map((result) => (
-        <div key={result.id}>{result.player}</div>
-        ))}
+      {searchResults.length > 0 && (
+  <div>
+    {searchResults.map((result) => (
+      <div key={result.id}>{result.player}</div>
+    ))}
+  </div>
+)}
         <ol>
           <li>
             <Link to="/">Home</Link>
@@ -36,19 +41,18 @@ function App() {
           <li>
             <Link to="/new-player-form">New Player Form</Link>
           </li>
-          <li>
-            <Link to="/all-players">All Players</Link>
-          </li>
+
         </ol>
       </nav>
 
     <Routes>
       <Route path="/" element={<Header />} />
       <Route path="/new-player-form" element={<NewPlayerForm />} />
-      <Route path="/all-players" element={<Players />} />
+      <Route path="/id" element={<SinglePlayer />} />
     </Routes>
+    <Players />
     </div>
-    
+   
   );
 }
 
